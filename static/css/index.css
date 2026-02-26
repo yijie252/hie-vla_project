@@ -23,6 +23,12 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Wider page layout */
+.container.is-max-desktop,
+.container.is-max-widescreen {
+  max-width: 1400px !important;
+}
+
 /* Smooth scrolling for better UX */
 html {
   scroll-behavior: smooth;
