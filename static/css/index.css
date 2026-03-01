@@ -194,6 +194,51 @@ video {
 }
 
 
+/* ========== Tables ========== */
+.result-table {
+  font-size: 0.9rem;
+  border-collapse: collapse;
+}
+
+.result-table thead th {
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: center !important;
+  padding: 0.6rem 0.5rem;
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.result-table tbody td {
+  text-align: center !important;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.result-table tbody td:first-child {
+  text-align: left !important;
+  font-weight: 500;
+}
+
+.result-table tbody tr.is-selected {
+  background-color: #eff6ff !important;
+  color: var(--text-primary) !important;
+}
+
+.result-table tbody tr.is-selected td {
+  color: var(--primary-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+  border-radius: 8px;
+}
+
+
 /* ========== BibTeX ========== */
 .bibtex-header {
   display: flex;

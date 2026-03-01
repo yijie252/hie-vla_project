@@ -223,22 +223,144 @@
       <h2 class="title is-3 has-text-centered">Results</h2>
       <div class="content">
 
+        <!-- Table I: Main Results -->
+        <h3 class="title is-4">Real-World Evaluation</h3>
+        <p class="figure-caption has-text-justified">
+          <strong>Table I: Real-world evaluation of Hie-VLA and baselines across multiple tasks.</strong> All methods are trained using the same atomic skill dataset. Success rates are reported for each atomic skill stage.
+        </p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th rowspan="2">Method</th>
+                <th colspan="2">Organize Pumpkin</th>
+                <th colspan="3">Desktop Organization</th>
+                <th colspan="3">Tower of Hanoi</th>
+                <th colspan="4">Prepare Dinner</th>
+                <th rowspan="2">Avg.</th>
+              </tr>
+              <tr>
+                <th>1</th><th>2</th>
+                <th>1</th><th>2</th><th>3</th>
+                <th>1</th><th>2</th><th>3</th>
+                <th>1</th><th>2</th><th>3</th><th>4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>RDT</td>
+                <td>71.4</td><td>57.1</td>
+                <td>62.5</td><td>40.2</td><td>67.5</td>
+                <td>44.3</td><td>22.5</td><td>10.3</td>
+                <td>78.3</td><td>54.2</td><td>68.4</td><td>27.2</td>
+                <td>50.3</td>
+              </tr>
+              <tr>
+                <td>&pi;<sub>0</sub></td>
+                <td>72.6</td><td>45.4</td>
+                <td>87.5</td><td>54.5</td><td>69.2</td>
+                <td>38.2</td><td>18.5</td><td>8.6</td>
+                <td>84.2</td><td>62.4</td><td>71.5</td><td>40.6</td>
+                <td>54.4</td>
+              </tr>
+              <tr>
+                <td>&pi;<sub>0.5</sub></td>
+                <td>78.5</td><td>67.5</td>
+                <td>84.5</td><td>67.5</td><td>72.7</td>
+                <td>81.5</td><td>54.6</td><td>20.5</td>
+                <td>85.0</td><td>78.5</td><td>76.0</td><td>45.5</td>
+                <td>67.7</td>
+              </tr>
+              <tr class="is-selected">
+                <td><strong>Ours</strong></td>
+                <td><strong>86.5</strong></td><td><strong>77.5</strong></td>
+                <td><strong>92.5</strong></td><td><strong>78.2</strong></td><td><strong>80.8</strong></td>
+                <td><strong>89.8</strong></td><td><strong>67.7</strong></td><td><strong>49.0</strong></td>
+                <td><strong>89.6</strong></td><td><strong>74.7</strong></td><td><strong>78.5</strong></td><td><strong>50.0</strong></td>
+                <td><strong>76.2</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="container is-max-widescreen"><hr class="hr-thin"></div>
+
+        <!-- Table II: Generalization -->
         <h3 class="title is-4">Generalization to Unseen Scenarios</h3>
         <div class="has-text-centered">
           <img src="static/images/fig5_generalization.jpg" alt="Generalization performance comparison" class="figure-img">
         </div>
         <p class="figure-caption has-text-justified">
-          <strong>Comparison of performance across different accuracy in unseen scenarios.</strong> We evaluate Hie-VLA on the "Organize Pumpkin" task across three out-of-distribution scenarios: unseen manipulated objects, low lighting, and complex backgrounds. Our model demonstrates strong generalization capabilities, achieving an average of 75.2% success rate compared to 60.0% for the previous best method.
+          <strong>Comparison of performance across different accuracy in unseen scenarios.</strong> We evaluate Hie-VLA on the "Organize Pumpkin" task across three out-of-distribution scenarios: unseen manipulated objects, low lighting, and complex backgrounds.
         </p>
+
+        <div class="table-container" style="max-width: 700px; margin: 1.5rem auto;">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Unseen Obj</th>
+                <th>Unseen Lighting</th>
+                <th>Unseen BG</th>
+                <th>Avg.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>RDT</td><td>57.5</td><td>22.5</td><td>18.1</td><td>32.7</td>
+              </tr>
+              <tr>
+                <td>&pi;<sub>0</sub></td><td>62.5</td><td>54.2</td><td>55.8</td><td>57.5</td>
+              </tr>
+              <tr>
+                <td>&pi;<sub>0.5</sub></td><td>65.0</td><td>62.5</td><td>52.5</td><td>60.0</td>
+              </tr>
+              <tr class="is-selected">
+                <td><strong>Ours</strong></td><td><strong>72.5</strong></td><td><strong>78.2</strong></td><td><strong>75.0</strong></td><td><strong>75.2</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div class="container is-max-widescreen"><hr class="hr-thin"></div>
 
+        <!-- Language-Constrained Execution -->
         <h3 class="title is-4">Language-Constrained Execution</h3>
         <div class="has-text-centered">
           <img src="static/images/fig6_language.jpg" alt="Language-constrained action execution" class="figure-img">
         </div>
         <p class="figure-caption has-text-justified">
           <strong>The process of executing actions under language constraints.</strong> The robot avoids restricted skills based on constraints specified in the dialogue. Under constrained prompts, the model executes specific actions while correctly avoiding prohibited operations, demonstrating strong language following capabilities enabled by atomic skill training.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container is-max-widescreen"><hr></div>
+
+  <!-- ==================== ABLATION STUDY ==================== -->
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3 has-text-centered">Ablation Study</h2>
+      <div class="content">
+
+        <h3 class="title is-4">Discrete Actions Inference</h3>
+        <div class="has-text-centered">
+          <img src="static/images/fig7_ablation_tokenizer.jpg" alt="Ablation study: discrete action tokens" class="figure-img">
+        </div>
+        <p class="figure-caption has-text-justified">
+          <strong>Performance comparison between Hie-VLA and w/o-tokenizer across different stages in the Tower of Hanoi task.</strong> Adding discrete action token information during VLM training enhances subtask success rates, as discrete actions facilitate the distinction between different atomic skills and reasoning about correct skill instructions in dynamic environments.
+        </p>
+
+        <div class="container is-max-widescreen"><hr class="hr-thin"></div>
+
+        <h3 class="title is-4">Benefits of Atomic Skill Dataset</h3>
+        <div class="has-text-centered">
+          <img src="static/images/fig8_ablation_dataset.jpg" alt="Ablation study: atomic skill dataset" class="figure-img">
+        </div>
+        <p class="figure-caption has-text-justified">
+          <strong>Performance comparison of models trained on the atomic and original datasets across two sequential stages of the Organize Pumpkin task.</strong> Atomic training achieves comparable success rates while better learning sequential dependencies. Moreover, atomic training achieves higher success rates in half the training steps (early training), as the atomic dataset provides richer action diversity through skill combinations, improving data efficiency.
         </p>
 
       </div>
