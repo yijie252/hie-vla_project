@@ -225,8 +225,11 @@
 
         <!-- Table I: Main Results -->
         <h3 class="title is-4">Real-World Evaluation</h3>
+        <p class="has-text-justified">
+          To comprehensively evaluate our model, we compare Hie-VLA against strong baselines in robotic manipulation: <strong>RDT</strong>, <strong>&pi;<sub>0</sub></strong>, and <strong>&pi;<sub>0.5</sub></strong>. All models are finetuned on our collected atomic skill dataset, initialized from publicly available pretrained weights, under the same experimental setup. Task evaluation proceeds as follows: skills without sequential dependencies are evaluated independently; otherwise, they are tested in order, with any unsuccessful action leading to immediate termination. Each task is evaluated 300 times.
+        </p>
         <p class="figure-caption has-text-justified">
-          <strong>Table I: Real-world evaluation of Hie-VLA and baselines across multiple tasks.</strong> All methods are trained using the same atomic skill dataset. Success rates are reported for each atomic skill stage.
+          <strong>Table I: Real-world evaluation of Hie-VLA and baselines across multiple tasks.</strong> All methods are trained using the same atomic skill dataset. Success rates (%) are reported for each atomic skill stage.
         </p>
         <div class="table-container">
           <table class="table result-table">
@@ -282,16 +285,22 @@
             </tbody>
           </table>
         </div>
+        <p class="has-text-justified">
+          Our model achieves an average success rate of <strong>76.2%</strong> across 4 tasks and 12 atomic skill stages, surpassing the previous state-of-the-art methods RDT and &pi;<sub>0.5</sub> by margins of <strong>33%</strong> and <strong>11%</strong>, respectively. Through embedding subtask labels in VLM training, our model leverages pretrained knowledge for task decomposition and guided action generation. Notably, Hie-VLA achieves superior performance on <strong>11 out of 12</strong> atomic tasks, demonstrating the robustness of its skill execution. The improvement is particularly significant in multi-step tasks such as Tower of Hanoi, where our method achieves 49.0% on the hardest third stage compared to only 20.5% for &pi;<sub>0.5</sub>.
+        </p>
 
         <div class="container is-max-widescreen"><hr class="hr-thin"></div>
 
         <!-- Table II: Generalization -->
         <h3 class="title is-4">Generalization to Unseen Scenarios</h3>
+        <p class="has-text-justified">
+          To evaluate the generalization capability of Hie-VLA in real-world settings, we conduct experiments on the "Organize Pumpkin" task across three out-of-distribution (OOD) scenarios: <strong>unseen manipulated objects</strong>, <strong>low lighting</strong>, and <strong>complex backgrounds</strong>. These scenarios assess whether the model can extract task-relevant information while remaining robust to visual distractions.
+        </p>
         <div class="has-text-centered">
           <img src="static/images/fig5_generalization.jpg" alt="Generalization performance comparison" class="figure-img">
         </div>
         <p class="figure-caption has-text-justified">
-          <strong>Comparison of performance across different accuracy in unseen scenarios.</strong> We evaluate Hie-VLA on the "Organize Pumpkin" task across three out-of-distribution scenarios: unseen manipulated objects, low lighting, and complex backgrounds.
+          <strong>Comparison of performance across different accuracy in unseen scenarios.</strong> These scenarios assess whether the model can extract task-relevant information while remaining robust to distractions.
         </p>
 
         <div class="table-container" style="max-width: 700px; margin: 1.5rem auto;">
@@ -321,16 +330,25 @@
             </tbody>
           </table>
         </div>
+        <p class="has-text-justified">
+          Our model demonstrates strong generalization capabilities and outperforms all baselines, achieving an average of <strong>75.2%</strong> compared to 60.0% for &pi;<sub>0.5</sub>. The improvement is especially pronounced under unseen lighting (78.2% vs. 62.5%) and unseen backgrounds (75.0% vs. 52.5%), highlighting the importance of staged training with heterogeneous modality inputs in Hie-VLA to improve robustness to perceptual perturbations.
+        </p>
 
         <div class="container is-max-widescreen"><hr class="hr-thin"></div>
 
         <!-- Language-Constrained Execution -->
         <h3 class="title is-4">Language-Constrained Execution</h3>
+        <p class="has-text-justified">
+          A key advantage of Hie-VLA is its ability to understand and follow language constraints during task execution. The policy supports real-time user intervention to update information, provide feedback, or completely change the task—a practical capability for Human-Robot Interaction (HRI).
+        </p>
         <div class="has-text-centered">
           <img src="static/images/fig6_language.jpg" alt="Language-constrained action execution" class="figure-img">
         </div>
         <p class="figure-caption has-text-justified">
-          <strong>The process of executing actions under language constraints.</strong> The robot avoids restricted skills based on constraints specified in the dialogue. Under constrained prompts, the model executes specific actions while correctly avoiding prohibited operations, demonstrating strong language following capabilities enabled by atomic skill training.
+          <strong>The process of executing actions under language constraints.</strong> The robot avoids restricted skills based on constraints specified in the dialogue.
+        </p>
+        <p class="has-text-justified">
+          Under constrained prompts (e.g., "Organize the table except the eraser"), the model correctly executes specific actions while avoiding prohibited operations. This is enabled by two factors: (1) Hie-VLA can understand instruction constraints and provide correct subtask prompts for action generation, and (2) the atomic skill dataset enriches data diversity by incorporating high-level semantic information across different action combinations, enabling the model to reason about which skills to execute and which to skip.
         </p>
 
       </div>
@@ -346,21 +364,33 @@
       <div class="content">
 
         <h3 class="title is-4">Discrete Actions Inference</h3>
+        <p class="has-text-justified">
+          We trained Hie-VLA with and without the action tokenizer to evaluate whether discrete action tokens help align subtask annotations during VLM training. The comparison is conducted on the Tower of Hanoi task.
+        </p>
         <div class="has-text-centered">
           <img src="static/images/fig7_ablation_tokenizer.jpg" alt="Ablation study: discrete action tokens" class="figure-img">
         </div>
         <p class="figure-caption has-text-justified">
-          <strong>Performance comparison between Hie-VLA and w/o-tokenizer across different stages in the Tower of Hanoi task.</strong> Adding discrete action token information during VLM training enhances subtask success rates, as discrete actions facilitate the distinction between different atomic skills and reasoning about correct skill instructions in dynamic environments.
+          <strong>Performance comparison between Hie-VLA and w/o-tokenizer across different stages in the Tower of Hanoi task.</strong>
+        </p>
+        <p class="has-text-justified">
+          The results clearly illustrate that incorporating discrete action tokens enhances subtask success rates. This indicates that discrete actions facilitate the distinction between different atomic skills, enabling the model to reason about correct skill instructions in dynamic environments. Without action grounding, the VLM relies solely on language semantics, which is insufficient for distinguishing between physically similar but semantically different operations.
         </p>
 
         <div class="container is-max-widescreen"><hr class="hr-thin"></div>
 
         <h3 class="title is-4">Benefits of Atomic Skill Dataset</h3>
+        <p class="has-text-justified">
+          To evaluate the effectiveness of our atomic skill dataset, we collect an equal amount of long-horizon data (two-step sequences) for the Organize Pumpkin task as the baseline (denoted the <em>original dataset</em>) and finetune &pi;<sub>0.5</sub> on each dataset for 140K steps using 8 RTX 4090 GPUs.
+        </p>
         <div class="has-text-centered">
           <img src="static/images/fig8_ablation_dataset.jpg" alt="Ablation study: atomic skill dataset" class="figure-img">
         </div>
         <p class="figure-caption has-text-justified">
-          <strong>Performance comparison of models trained on the atomic and original datasets across two sequential stages of the Organize Pumpkin task.</strong> Atomic training achieves comparable success rates while better learning sequential dependencies. Moreover, atomic training achieves higher success rates in half the training steps (early training), as the atomic dataset provides richer action diversity through skill combinations, improving data efficiency.
+          <strong>Performance comparison of models trained on the atomic and original datasets across two sequential stages of the Organize Pumpkin task.</strong>
+        </p>
+        <p class="has-text-justified">
+          Atomic training achieves comparable final success rates while better learning sequential dependencies between skills. Notably, atomic training reaches higher success rates in <strong>half the training steps</strong> (denoted as early training), as the atomic dataset provides richer action diversity through skill combinations, significantly improving data efficiency. Furthermore, atomic skill collection is substantially faster than recording full multi-step trajectories, providing a scalable approach for long-horizon task dataset construction.
         </p>
 
       </div>
