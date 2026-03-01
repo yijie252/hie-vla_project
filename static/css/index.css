@@ -194,48 +194,89 @@ video {
 }
 
 
-/* ========== Tables ========== */
+/* ========== Tables (LaTeX booktabs style) ========== */
+.table-container {
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+}
+
 .result-table {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  font-family: 'Times New Roman', 'Noto Serif', Georgia, serif;
   border-collapse: collapse;
+  width: 100%;
+  background: transparent;
 }
 
 .result-table thead th {
-  background: var(--background-secondary);
+  background: transparent;
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 700;
   text-align: center !important;
-  padding: 0.6rem 0.5rem;
-  border: 1px solid var(--border-color);
+  padding: 0.55rem 0.6rem;
+  border: none;
+  border-top: 2px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
   white-space: nowrap;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+}
+
+.result-table thead tr:first-child th {
+  border-bottom: none;
+  padding-bottom: 0.2rem;
+}
+
+.result-table thead tr:last-child th {
+  border-top: none;
+  border-bottom: 1px solid #1a1a1a;
+  padding-top: 0.2rem;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
 }
 
 .result-table tbody td {
   text-align: center !important;
-  padding: 0.5rem;
-  border: 1px solid var(--border-color);
+  padding: 0.45rem 0.6rem;
+  border: none;
+  border-bottom: none;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
 }
 
 .result-table tbody td:first-child {
   text-align: left !important;
-  font-weight: 500;
+  font-weight: 600;
+  font-style: italic;
+  padding-left: 0.2rem;
+}
+
+.result-table tbody tr:last-child td {
+  border-bottom: 2px solid #1a1a1a;
 }
 
 .result-table tbody tr.is-selected {
-  background-color: #eff6ff !important;
+  background: transparent !important;
   color: var(--text-primary) !important;
 }
 
 .result-table tbody tr.is-selected td {
-  color: var(--primary-color) !important;
-  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+  font-weight: 700;
 }
 
-.table-container {
-  overflow-x: auto;
-  margin: 1rem 0 1.5rem;
-  border-radius: 8px;
+.result-table tbody tr.is-selected td:first-child {
+  font-style: normal;
+}
+
+.result-table .table-caption {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 0.5rem 0 0;
+  font-style: italic;
 }
 
 
